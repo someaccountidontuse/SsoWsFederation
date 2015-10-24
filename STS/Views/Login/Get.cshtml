@@ -1,0 +1,39 @@
+﻿@model STS.ViewModels.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Security Token Service</title>
+</head>
+<body>
+    <h3>Security Token Service - authenticate and receive a token for Single Sign On</h3>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Login</legend>
+            <div>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div>
+                <input type="submit" value="Submit" />
+            </div>
+        </fieldset>
+    }
+
+</body>
+</html>

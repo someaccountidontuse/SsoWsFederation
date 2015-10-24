@@ -1,0 +1,33 @@
+﻿@model IEnumerable<string>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Sign out</title>
+</head>
+<body>
+    <p>You are now signed out of all out sites...</p>
+
+    @foreach (var realm in Model)
+    {
+        <p>
+            The sts had to sign you out of : @realm
+            <img title="@realm" src="@realm?wa=wsignoutcleanup1.0" />
+        </p>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(ViewBag.ReturnUrl))
+    {
+        <p>
+            <a href='@ViewBag.ReturnUrl'>Log back in to your last visited site...</a>
+        </p>
+    }
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@model SecurityTokenService.ViewModels.SignOutViewModel
+
+@{
+    ViewBag.Title = "Single Sign Out - the hardest bit";
+}
+<h1>Single Sign Out (the hardest bit!)</h1>
+<h4>You are now signed out of both relying parties...</h4>
+<div>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Realm signed out by the Sts (p.s - the site you signed out from will have signed you out personally, not via the sts, so will not appear here.)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var realm in @Model.RealmsToSignOut)
+            {
+                <tr>
+                    <td>
+                        @realm <img title="@realm" src="@realm?wa=wsignoutcleanup1.0" alt="a green tick" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (!string.IsNullOrEmpty(@Model.ReturnUrl))
+    {
+        <p>
+            <a href='@Model.ReturnUrl'>Log back in to the last site you visited...</a>
+        </p>
+    }
+</div>

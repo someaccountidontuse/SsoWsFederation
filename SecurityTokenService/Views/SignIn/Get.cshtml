@@ -1,0 +1,30 @@
+﻿@model SecurityTokenService.ViewModels.SignInViewModel
+@{
+    ViewBag.Title = "Single Sign On";
+}
+
+<div>
+    <h1>Single Sign On</h1>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <div class="form-group">
+                <div>
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User name" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+            </div>
+        </fieldset>
+        <div>
+            <input type="submit" class="button" value="Submit" />
+        </div>
+    }
+</div>
